@@ -151,4 +151,6 @@ public class SlotAlbumServiceImpl implements SlotAlbumService {
 		return mapper.parseListDTO(slotAlbumList);
 
 	}
+
+
 }
