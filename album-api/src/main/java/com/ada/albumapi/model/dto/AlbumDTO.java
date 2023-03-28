@@ -13,6 +13,8 @@ public class AlbumDTO {
 	
 	private UUID identificador;
 	
+	private UUID identificadorFixo;
+	
 	private String titulo;
 	
 	private String descricao;

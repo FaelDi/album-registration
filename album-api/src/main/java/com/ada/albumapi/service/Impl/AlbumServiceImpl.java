@@ -7,10 +7,12 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.ada.albumapi.model.dto.AlbumDTO;
+import com.ada.albumapi.model.dto.SlotAlbumDTO;
 import com.ada.albumapi.model.entity.Album;
 import com.ada.albumapi.model.mapper.AlbumMapper;
 import com.ada.albumapi.repository.AlbumRepository;
 import com.ada.albumapi.service.AlbumService;
+import com.ada.albumapi.service.SlotAlbumService;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -21,8 +23,11 @@ public class AlbumServiceImpl implements AlbumService {
 	
 	private AlbumMapper mapper = new AlbumMapper();
 	
-	public AlbumServiceImpl(AlbumRepository repository) {
+	private SlotAlbumService slotAlbumService;
+	
+	public AlbumServiceImpl(AlbumRepository repository, SlotAlbumService slotAlbumService) {
 		this.repository = repository;
+		this.slotAlbumService = slotAlbumService;
 	}
 	
 	@Override
@@ -53,10 +58,22 @@ public class AlbumServiceImpl implements AlbumService {
 
 		Album album = mapper.parseEntity(dto);
 		
-		album.setId(null);
+		album.setId(null); 
 		album.setIdentificador(UUID.randomUUID());
 		
+		if (album.getIdentificadorFixo() == null) {
+			
+			album.setIdentificadorFixo(album.getIdentificador());
+			
+		}
+		
 		Album entity = repository.save(album);
+		
+		if (entity != null) {
+			
+			slotAlbumService.criarTodosSlots(entity.getIdentificador());
+			
+		}
 		
 		return mapper.parseDTO(entity);
 

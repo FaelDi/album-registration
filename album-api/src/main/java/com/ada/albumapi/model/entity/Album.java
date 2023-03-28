@@ -22,6 +22,10 @@ public class Album {
 	@GeneratedValue(strategy=GenerationType.UUID)
 	private UUID identificador;
 	
+	@GeneratedValue(strategy=GenerationType.UUID)
+	@Column(name="identificador_fixo", nullable=false)
+	private UUID identificadorFixo;
+	
 	@Column(name="titulo", nullable=false)
 	private String titulo;
 	
