@@ -49,6 +49,7 @@ public class AlbumMapper implements Mapper<Album, AlbumDTO> {
 		AlbumDTO dto = new AlbumDTO();
 		
 		dto.setId(entity.getId());
+		dto.setUsuarioId(entity.getUsuarioId());
 		dto.setIdentificador(entity.getIdentificador());
 		dto.setIdentificadorFixo(entity.getIdentificadorFixo());
 		dto.setTitulo(entity.getTitulo());
@@ -63,6 +64,7 @@ public class AlbumMapper implements Mapper<Album, AlbumDTO> {
 		Album entity = new Album();
 		
 		entity.setId(dto.getId());
+		entity.setUsuarioId(dto.getUsuarioId());
 		entity.setIdentificador(dto.getIdentificador());
 		entity.setIdentificadorFixo(dto.getIdentificadorFixo());
 		entity.setTitulo(dto.getTitulo());

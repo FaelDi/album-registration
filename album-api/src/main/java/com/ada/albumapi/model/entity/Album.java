@@ -22,6 +22,10 @@ public class Album {
 	private Long id;
 	
 	@GeneratedValue(strategy=GenerationType.UUID)
+	@Column(name="usuario_id", nullable=false)
+	private UUID usuarioId;
+	
+	@GeneratedValue(strategy=GenerationType.UUID)
 	private UUID identificador;
 	
 	@GeneratedValue(strategy=GenerationType.UUID)

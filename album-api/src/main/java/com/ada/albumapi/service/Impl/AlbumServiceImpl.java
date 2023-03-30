@@ -7,7 +7,6 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.ada.albumapi.model.dto.AlbumDTO;
-import com.ada.albumapi.model.dto.SlotAlbumDTO;
 import com.ada.albumapi.model.entity.Album;
 import com.ada.albumapi.model.mapper.AlbumMapper;
 import com.ada.albumapi.repository.AlbumRepository;

@@ -13,6 +13,8 @@ public class AlbumDTO {
 
 	private Long id;
 	
+	private UUID usuarioId;
+
 	private UUID identificador;
 	
 	private UUID identificadorFixo;
