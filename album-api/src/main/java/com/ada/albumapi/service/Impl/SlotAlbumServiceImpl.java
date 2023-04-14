@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.ada.albumapi.infrastructure.eventproducer.AlbumProducer;
 import com.ada.albumapi.model.dto.SlotAlbumDTO;
 import com.ada.albumapi.model.entity.SlotAlbum;
 import com.ada.albumapi.model.mapper.SlotAlbumMapper;
@@ -24,10 +25,13 @@ public class SlotAlbumServiceImpl implements SlotAlbumService {
 	
 	private RaridadeUtils raridadeUtils;
 	
-	public SlotAlbumServiceImpl(SlotAlbumRepository repository, RaridadeUtils raridadeUtils) {
+	private AlbumProducer albumProducer;
+	
+	public SlotAlbumServiceImpl(SlotAlbumRepository repository, RaridadeUtils raridadeUtils, AlbumProducer albumProducer) {
 		
 		this.repository = repository;
 		this.raridadeUtils = raridadeUtils;
+		this.albumProducer = albumProducer;
 		
 	}
 	
@@ -147,6 +151,9 @@ public class SlotAlbumServiceImpl implements SlotAlbumService {
 		if (slotAlbumListOp.isPresent()) {
 			slotAlbumList = slotAlbumListOp.get();
 		}
+		
+		String message = "album criado";
+		albumProducer.send(message);
 			
 		return mapper.parseListDTO(slotAlbumList);
 

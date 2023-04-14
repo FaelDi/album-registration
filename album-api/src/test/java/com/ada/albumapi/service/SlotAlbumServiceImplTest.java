@@ -20,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.ada.albumapi.infrastructure.eventproducer.AlbumProducer;
 import com.ada.albumapi.model.dto.SlotAlbumDTO;
 import com.ada.albumapi.model.entity.SlotAlbum;
 import com.ada.albumapi.repository.SlotAlbumRepository;
@@ -35,6 +36,8 @@ public class SlotAlbumServiceImplTest {
 
     @Mock
     private SlotAlbumRepository repository;
+    
+    private AlbumProducer albumProducer;
 
     @Mock
     private RaridadeUtils raridadeUtils;
@@ -55,7 +58,7 @@ public class SlotAlbumServiceImplTest {
         slotAlbum.setRaridade(slotAlbumDTO.getRaridade());
     	
         MockitoAnnotations.openMocks(this);
-        service = new SlotAlbumServiceImpl(repository, raridadeUtils);
+        service = new SlotAlbumServiceImpl(repository, raridadeUtils, albumProducer);
     }
 
     @Test
