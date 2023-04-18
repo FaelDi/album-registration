@@ -152,7 +152,7 @@ public class SlotAlbumServiceImpl implements SlotAlbumService {
 			slotAlbumList = slotAlbumListOp.get();
 		}
 		
-		String message = "album criado";
+		String message = identificador.toString();
 		albumProducer.send(message);
 			
 		return mapper.parseListDTO(slotAlbumList);
