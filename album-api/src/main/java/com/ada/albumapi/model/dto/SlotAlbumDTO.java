@@ -19,17 +19,14 @@ public class SlotAlbumDTO {
 	
 	private int quantidadeFigurinhas;
 	
-	private int raridade;
-	
 	private int ordem;
 
-	public SlotAlbumDTO(UUID identificador, UUID identificadorAlbum, int raridade, int ordem) {
+	public SlotAlbumDTO(UUID identificador, UUID identificadorAlbum, int ordem) {
 		
 		this.id = null;
 		this.identificador = identificador;
 		this.identificadorAlbum = identificadorAlbum;
 		this.quantidadeFigurinhas = 0;
-		this.raridade = raridade;
 		this.ordem = ordem;
 		
 	}

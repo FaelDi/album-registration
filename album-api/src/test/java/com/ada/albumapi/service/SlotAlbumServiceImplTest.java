@@ -49,13 +49,13 @@ public class SlotAlbumServiceImplTest {
     	slotAlbumDTO = new SlotAlbumDTO();
         slotAlbumDTO.setIdentificadorAlbum(UUID.randomUUID());
         slotAlbumDTO.setQuantidadeFigurinhas(10);
-        slotAlbumDTO.setRaridade(3);
+        //slotAlbumDTO.setRaridade(3);
 
         slotAlbum = new SlotAlbum();
         slotAlbum.setIdentificador(UUID.randomUUID());
         slotAlbum.setIdentificadorAlbum(slotAlbumDTO.getIdentificadorAlbum());
         slotAlbum.setQuantidadeFigurinhas(slotAlbumDTO.getQuantidadeFigurinhas());
-        slotAlbum.setRaridade(slotAlbumDTO.getRaridade());
+        //slotAlbum.setRaridade(slotAlbumDTO.getRaridade());
     	
         MockitoAnnotations.openMocks(this);
         service = new SlotAlbumServiceImpl(repository, raridadeUtils, albumProducer);
@@ -70,8 +70,8 @@ public class SlotAlbumServiceImplTest {
         List<SlotAlbumDTO> result = service.buscarTodos();
 
         assertEquals(2, result.size());
-        assertEquals(3, result.get(0).getRaridade());
-        assertEquals(3, result.get(1).getRaridade());
+        //assertEquals(3, result.get(0).getRaridade());
+        //assertEquals(3, result.get(1).getRaridade());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class SlotAlbumServiceImplTest {
 
         SlotAlbumDTO result = service.buscarUm(identificador);
 
-        assertEquals(3, result.getRaridade());
+        //assertEquals(3, result.getRaridade());
         assertEquals(0, result.getOrdem());
     }
 
@@ -98,19 +98,19 @@ public class SlotAlbumServiceImplTest {
     @Test
     public void criarTest() {
         UUID identificador = UUID.randomUUID();
-        SlotAlbumDTO dto = new SlotAlbumDTO(null, identificador, 1, 1);
+        SlotAlbumDTO dto = new SlotAlbumDTO(null, identificador, 1/*, 1*/);
         when(repository.save(ArgumentMatchers.any(SlotAlbum.class))).thenReturn(slotAlbum);
 
         SlotAlbumDTO result = service.criar(dto);
 
-        assertEquals(3, result.getRaridade());
+        //assertEquals(3, result.getRaridade());
         assertEquals(0, result.getOrdem());
     }
     
     @Test
     public void testEditar() {
         UUID identificador = UUID.randomUUID();
-        SlotAlbumDTO dto = new SlotAlbumDTO(identificador, UUID.randomUUID(), 1, 1);
+        SlotAlbumDTO dto = new SlotAlbumDTO(identificador, UUID.randomUUID(), 1/*, 1*/);
 
         when(repository.findByIdentificador(identificador))
                 .thenReturn(Optional.of(slotAlbum));
@@ -122,13 +122,13 @@ public class SlotAlbumServiceImplTest {
         assertNotNull(result);
         assertEquals(dto.getIdentificadorAlbum(), result.getIdentificadorAlbum());
         assertEquals(dto.getQuantidadeFigurinhas(), result.getQuantidadeFigurinhas());
-        assertEquals(dto.getRaridade(), result.getRaridade());
+        //assertEquals(dto.getRaridade(), result.getRaridade());
     }
 
     @Test
     public void testEditarSlotAlbumInexistente() {
         UUID identificador = UUID.randomUUID();
-        SlotAlbumDTO dto = new SlotAlbumDTO(identificador, UUID.randomUUID(), 1, 1);
+        SlotAlbumDTO dto = new SlotAlbumDTO(identificador, UUID.randomUUID(), 1/*, 1*/);
 
         when(repository.findByIdentificador(identificador)).thenReturn(Optional.empty());
 
@@ -162,12 +162,12 @@ public class SlotAlbumServiceImplTest {
 
         SlotAlbum slotAlbum1 = new SlotAlbum();
         slotAlbum1.setIdentificadorAlbum(identificador);
-        slotAlbum1.setRaridade(1);
+        //slotAlbum1.setRaridade(1);
         slotAlbum1.setOrdem(1);
 
         SlotAlbum slotAlbum2 = new SlotAlbum();
         slotAlbum2.setIdentificadorAlbum(identificador);
-        slotAlbum2.setRaridade(2);
+        //slotAlbum2.setRaridade(2);
         slotAlbum2.setOrdem(2);
 
         List<SlotAlbum> slotAlbumList = Arrays.asList(slotAlbum1, slotAlbum2);
@@ -181,12 +181,12 @@ public class SlotAlbumServiceImplTest {
 
         SlotAlbumDTO slotAlbumDTO1 = new SlotAlbumDTO();
         slotAlbumDTO1.setIdentificadorAlbum(identificador);
-        slotAlbumDTO1.setRaridade(1);
+        //slotAlbumDTO1.setRaridade(1);
         slotAlbumDTO1.setOrdem(1);
 
         SlotAlbumDTO slotAlbumDTO2 = new SlotAlbumDTO();
         slotAlbumDTO2.setIdentificadorAlbum(identificador);
-        slotAlbumDTO2.setRaridade(2);
+        //slotAlbumDTO2.setRaridade(2);
         slotAlbumDTO2.setOrdem(2);
 
         assertNotNull(service);
@@ -200,13 +200,13 @@ public class SlotAlbumServiceImplTest {
         raridades.add(1);
         raridades.add(2);
         raridades.add(3);
-        when(raridadeUtils.generate()).thenReturn(raridades);
+        //when(raridadeUtils.generate()).thenReturn(raridades);
         when(repository.save(ArgumentMatchers.any(SlotAlbum.class))).thenReturn(slotAlbum);
 
 
-        SlotAlbumDTO slotAlbumDTO1 = new SlotAlbumDTO(UUID.randomUUID(), identificador, 1, 1);
-        SlotAlbumDTO slotAlbumDTO2 = new SlotAlbumDTO(UUID.randomUUID(), identificador, 2, 2);
-        SlotAlbumDTO slotAlbumDTO3 = new SlotAlbumDTO(UUID.randomUUID(), identificador, 3, 3);
+        SlotAlbumDTO slotAlbumDTO1 = new SlotAlbumDTO(UUID.randomUUID(), identificador, 1/*, 1*/);
+        SlotAlbumDTO slotAlbumDTO2 = new SlotAlbumDTO(UUID.randomUUID(), identificador, 2/*, 2*/);
+        SlotAlbumDTO slotAlbumDTO3 = new SlotAlbumDTO(UUID.randomUUID(), identificador, 3/*, 3*/);
         List<SlotAlbumDTO> expected = new ArrayList<>();
         expected.add(slotAlbumDTO1);
         expected.add(slotAlbumDTO2);

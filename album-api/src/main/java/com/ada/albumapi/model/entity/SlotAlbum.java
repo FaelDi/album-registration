@@ -35,9 +35,6 @@ public class SlotAlbum {
 	@Column(name="quantidade_figurinhas", nullable=false)
 	private int quantidadeFigurinhas;
 	
-	@Column(name="raridade", nullable=false, columnDefinition="INT")
-	private int raridade;
-	
 	@Column(name="ordem", nullable=false)
 	private int ordem;
 }

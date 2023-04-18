@@ -9,6 +9,6 @@ public interface SlotAlbumService extends BaseService<SlotAlbumDTO> {
 
 	List<SlotAlbumDTO> buscarTodosPorAlbum(UUID identificador);
 	
-	List<SlotAlbumDTO> criarTodosSlots(UUID identificador);
+	List<SlotAlbumDTO> criarTodosSlots(UUID identificador, Integer quantidade);
 
 }

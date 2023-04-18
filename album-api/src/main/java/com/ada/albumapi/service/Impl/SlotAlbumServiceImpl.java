@@ -84,7 +84,6 @@ public class SlotAlbumServiceImpl implements SlotAlbumService {
 			
 			slotAlbum.setIdentificadorAlbum(dto.getIdentificadorAlbum());
 			slotAlbum.setQuantidadeFigurinhas(dto.getQuantidadeFigurinhas());
-			slotAlbum.setRaridade(dto.getRaridade());
 			
 			slotAlbum = repository.save(slotAlbum);
 			
@@ -131,13 +130,14 @@ public class SlotAlbumServiceImpl implements SlotAlbumService {
 	}
 
 	@Override
-	public List<SlotAlbumDTO> criarTodosSlots(UUID identificador) {
+	public List<SlotAlbumDTO> criarTodosSlots(UUID identificador, Integer quantidade) {
 
 		int ordem = 1;
 			
-		for (Integer raridade: raridadeUtils.generate()) {
+		//for (Integer raridade: raridadeUtils.generate()) {
+		for (int i = 0; i < quantidade; i++) {
 				
-			SlotAlbumDTO slotAlbumDTO = new SlotAlbumDTO(UUID.randomUUID(), identificador, raridade, ordem);
+			SlotAlbumDTO slotAlbumDTO = new SlotAlbumDTO(UUID.randomUUID(), identificador, ordem);
 				
 			criar(slotAlbumDTO);
 				

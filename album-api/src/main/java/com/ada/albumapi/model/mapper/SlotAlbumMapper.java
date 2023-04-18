@@ -52,7 +52,6 @@ public class SlotAlbumMapper implements Mapper<SlotAlbum, SlotAlbumDTO> {
 		dto.setIdentificador(entity.getIdentificador());
 		dto.setIdentificadorAlbum(entity.getIdentificadorAlbum());
 		dto.setQuantidadeFigurinhas(entity.getQuantidadeFigurinhas());
-		dto.setRaridade(entity.getRaridade());
 		dto.setOrdem(entity.getOrdem());
 		
 		return dto;
@@ -67,7 +66,6 @@ public class SlotAlbumMapper implements Mapper<SlotAlbum, SlotAlbumDTO> {
 		entity.setIdentificador(dto.getIdentificador());
 		entity.setIdentificadorAlbum(dto.getIdentificadorAlbum());
 		entity.setQuantidadeFigurinhas(dto.getQuantidadeFigurinhas());
-		entity.setRaridade(dto.getRaridade());
 		entity.setOrdem(dto.getOrdem());
 		
 		return entity;

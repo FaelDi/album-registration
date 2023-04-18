@@ -52,7 +52,7 @@ public class SlotAlbumController extends BaseController<SlotAlbumDTO, SlotAlbumS
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(service.criarTodosSlots(identificador));
+                    .body(service.criarTodosSlots(identificador, 20));
 
         }catch(Exception ex) {
         	

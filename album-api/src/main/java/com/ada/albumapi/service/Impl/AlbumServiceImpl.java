@@ -70,7 +70,7 @@ public class AlbumServiceImpl implements AlbumService {
 		
 		if (entity != null) {
 			
-			slotAlbumService.criarTodosSlots(entity.getIdentificador());
+			slotAlbumService.criarTodosSlots(entity.getIdentificador(), 20);
 			
 		}
 		

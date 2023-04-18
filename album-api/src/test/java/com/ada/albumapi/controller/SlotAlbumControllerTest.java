@@ -43,7 +43,7 @@ public class SlotAlbumControllerTest {
 		slotAlbumDTO = new SlotAlbumDTO();
 		slotAlbumDTO.setIdentificadorAlbum(UUID.randomUUID());
 		slotAlbumDTO.setQuantidadeFigurinhas(10);
-		slotAlbumDTO.setRaridade(3);
+		//slotAlbumDTO.setRaridade(3);
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class SlotAlbumControllerTest {
 		List<SlotAlbumDTO> slots = new ArrayList<>();
 		slots.add(slotAlbumDTO);
 
-		when(service.criarTodosSlots(any(UUID.class))).thenReturn(slots);
+		when(service.criarTodosSlots(any(UUID.class), 20)).thenReturn(slots);
 
 		ResponseEntity<List<SlotAlbumDTO>> response = controller.criar(identificador);
 
